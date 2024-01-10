@@ -14,14 +14,34 @@ import okhttp3.Response;
 import pl.taw.api.ChuckNorrisJokesApiResponse;
 
 import java.io.IOException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ChuckNorrisJokesService {
 
     private static final Logger LOGGER = Logger.getLogger(ChuckNorrisJokesService.class.getName());
+    private static final String API_URL = "https://api.chucknorris.io/jokes/random";
     private OkHttpClient client = new OkHttpClient();
 
-    public String run(String url) throws IOException {
+    public ChuckNorrisJokesApiResponse randomJoke() {
+        LOGGER.info("randomJoke()");
+        try {
+            String responseBody = getResponse(API_URL);
+            ChuckNorrisJokesApiResponse chuckNorrisJokesApiResponse = convert(responseBody);
+            LOGGER.info("randomJoke(...) = " + chuckNorrisJokesApiResponse);
+
+            return chuckNorrisJokesApiResponse;
+
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Unable to connect with external API.", e);
+        }
+
+        LOGGER.info("randomJoke(...) = " + null);
+
+        return null;
+    }
+
+    public String getResponse(String url) throws IOException {
         LOGGER.info("run(" + url + ")");
         Request request = new Request.Builder()
                 .url(url)

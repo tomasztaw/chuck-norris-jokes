@@ -6,8 +6,6 @@ import pl.taw.api.ChuckNorrisJokesApiResponse;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ChuckNorrisJokesServiceTest {
 
     @Test
@@ -17,7 +15,7 @@ class ChuckNorrisJokesServiceTest {
         String url = "https://api.chucknorris.io/jokes/random";
 
         // when
-        String response = chuckNorrisJokesService.run(url);
+        String response = chuckNorrisJokesService.getResponse(url);
 
         // then
         Assertions.assertNotNull(response, "response is NULL!");
@@ -38,5 +36,18 @@ class ChuckNorrisJokesServiceTest {
 
         // then
         Assertions.assertNotNull(chuckNorrisJokesApiResponse, "response is NULL!");
+    }
+
+    @Test
+    void randomJoke() {
+        // given
+        ChuckNorrisJokesService chuckNorrisJokesService = new ChuckNorrisJokesService();
+
+        // when
+        ChuckNorrisJokesApiResponse chuckNorrisJokesApiResponse = chuckNorrisJokesService.randomJoke();
+
+        // then
+        Assertions.assertNotNull(chuckNorrisJokesApiResponse, "response is NULL!");
+
     }
 }
