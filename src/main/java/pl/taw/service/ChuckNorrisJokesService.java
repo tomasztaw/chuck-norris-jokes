@@ -11,12 +11,14 @@ import com.google.gson.Gson;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.springframework.stereotype.Service;
 import pl.taw.api.ChuckNorrisJokesApiResponse;
 
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@Service
 public class ChuckNorrisJokesService {
 
     private static final Logger LOGGER = Logger.getLogger(ChuckNorrisJokesService.class.getName());
