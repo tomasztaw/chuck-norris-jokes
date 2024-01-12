@@ -8,12 +8,14 @@
 package pl.taw.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.taw.api.ChuckNorrisJokesApiResponse;
 import pl.taw.service.ChuckNorrisJokesService;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
@@ -42,6 +44,22 @@ public class ChuckNorrisJokesController {
         model.addObject("joke", randomJoke().getValue());
 
         return model;
+    }
+
+    @GetMapping("/show/full")
+    public ModelAndView showFullRandomJoke() {
+        ModelAndView model = new ModelAndView("show-full");
+        model.addObject("jokeObj", randomJoke());
+
+        return model;
+    }
+
+    @GetMapping("/categories")
+    public String showCategories(Model model) {
+        List<String> categories = chuckNorrisJokesService.getCategories();
+        model.addAttribute("categories", categories);
+
+        return "categories";
     }
 
 }
