@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.taw.api.ChuckNorrisJokesApiResponse;
 import pl.taw.service.ChuckNorrisJokesService;
@@ -60,6 +61,15 @@ public class ChuckNorrisJokesController {
         model.addAttribute("categories", categories);
 
         return "categories";
+    }
+
+    @GetMapping("/category")
+    public String getJokeByCategory(@RequestParam String category, Model model) {
+        String joke = chuckNorrisJokesService.jokeByCategory(category);
+        model.addAttribute("joke", joke);
+        model.addAttribute("category", category);
+
+        return "jokeByCategory";
     }
 
 }

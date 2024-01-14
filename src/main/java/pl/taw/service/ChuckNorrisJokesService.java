@@ -8,8 +8,10 @@
 package pl.taw.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import lombok.AllArgsConstructor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -17,18 +19,27 @@ import org.springframework.stereotype.Service;
 import pl.taw.api.ChuckNorrisJokesApiResponse;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Service
+@AllArgsConstructor
 public class ChuckNorrisJokesService {
 
     private static final Logger LOGGER = Logger.getLogger(ChuckNorrisJokesService.class.getName());
     private static final String API_URL_RANDOM_JOKE = "https://api.chucknorris.io/jokes/random";
     private static final String API_CATEGORIES = "https://api.chucknorris.io/jokes/categories";
+    private static final String API_JOKE_BY_CATEGORY = "https://api.chucknorris.io/jokes/random?category=";
     private final OkHttpClient client = new OkHttpClient();
+
+    private final ObjectMapper objectMapper;
+
 
 
     public List<String> getCategories() {
@@ -97,5 +108,36 @@ public class ChuckNorrisJokesService {
         LOGGER.info("convert(...) = " + chuckNorrisJokesApiResponse);
 
         return chuckNorrisJokesApiResponse;
+    }
+
+    public String jokeByCategory(String category) {
+        try {
+            HttpClient httpClient = HttpClient.newHttpClient();
+
+            URI uri = URI.create(API_JOKE_BY_CATEGORY + category);
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(uri)
+                    .build();
+
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() == 200) {
+
+                JsonNode jsonNode = objectMapper.readTree(response.body());
+
+                // Pobieramy tylko treść żartu
+                return jsonNode.get("value").asText();
+
+
+//                return response.body();
+            } else {
+                System.out.println("Request failed with status code: " + response.statusCode());
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
