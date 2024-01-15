@@ -10,18 +10,11 @@ package pl.taw.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-//@Data
-//@JsonIgnoreProperties(ignoreUnknown = true)
+@Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ChuckNorrisCategoriesResponse {
 
     private String[] categories;
 
-    public String[] getCategories() {
-        return categories;
-    }
-
-    public void setCategories(String[] categories) {
-        this.categories = categories;
-    }
 
 }

@@ -9,15 +9,8 @@
 <h2>Available Categories:</h2>
 
 <h3 th:each="category : ${categories}">
-    <a th:href="@{/random/category(category=${category})}" th:text="${category}">
-
-    </a>
+    <a th:href="@{/random/category(category=${category})}" th:text="${category}"></a>
 </h3>
-
-
-<!--<ul>-->
-<!--    <li th:each="category : ${categories}" th:text="${category}"></li>-->
-<!--</ul>-->
 
 </body>
 </html>

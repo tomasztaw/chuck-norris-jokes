@@ -96,6 +96,7 @@ public class ChuckNorrisJokesService {
             assert response.body() != null;
             String body = response.body().string();
             LOGGER.info("run(...) = " + body);
+
             return body;
         }
     }
@@ -113,24 +114,15 @@ public class ChuckNorrisJokesService {
     public String jokeByCategory(String category) {
         try {
             HttpClient httpClient = HttpClient.newHttpClient();
-
             URI uri = URI.create(API_JOKE_BY_CATEGORY + category);
-
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(uri)
                     .build();
-
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() == 200) {
-
                 JsonNode jsonNode = objectMapper.readTree(response.body());
-
-                // Pobieramy tylko treść żartu
                 return jsonNode.get("value").asText();
-
-
-//                return response.body();
             } else {
                 System.out.println("Request failed with status code: " + response.statusCode());
                 return null;
@@ -139,5 +131,19 @@ public class ChuckNorrisJokesService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    // VOICES API
+    private static final String API_KEY = "Twój_klucz_API";
+    private static final String API_URL = "https://api.voicerss.org/";
+
+    public byte[] getChuckNorrisJokeAudio(String joke) {
+        String url = API_URL + "?" +
+                "key=" + API_KEY +
+                "&src=" + joke +
+                "&hl=en-us" +
+                "&c=MP3";
+        return null;
+//        return restTemplate.getForObject(url, byte[].class);
     }
 }
