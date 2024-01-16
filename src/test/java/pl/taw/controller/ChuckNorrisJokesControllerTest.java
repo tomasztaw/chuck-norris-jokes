@@ -1,5 +1,6 @@
 package pl.taw.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pl.taw.api.ChuckNorrisJokesApiResponse;
@@ -12,7 +13,7 @@ class ChuckNorrisJokesControllerTest {
     @Test
     void randomJoke() {
         // given
-        ChuckNorrisJokesService chuckNorrisJokesService = new ChuckNorrisJokesService();
+        ChuckNorrisJokesService chuckNorrisJokesService = new ChuckNorrisJokesService(new ObjectMapper());
         ChuckNorrisJokesController chuckNorrisJokesController = new ChuckNorrisJokesController(chuckNorrisJokesService);
 
         // when

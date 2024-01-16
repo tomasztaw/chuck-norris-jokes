@@ -1,5 +1,6 @@
 package pl.taw.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pl.taw.api.ChuckNorrisJokesApiResponse;
@@ -11,7 +12,7 @@ class ChuckNorrisJokesServiceTest {
     @Test
     void shouldByNotNull() throws IOException {
         // given
-        ChuckNorrisJokesService chuckNorrisJokesService = new ChuckNorrisJokesService();
+        ChuckNorrisJokesService chuckNorrisJokesService = new ChuckNorrisJokesService(new ObjectMapper());
         String url = "https://api.chucknorris.io/jokes/random";
 
         // when
@@ -24,7 +25,7 @@ class ChuckNorrisJokesServiceTest {
     @Test
     void convert() {
         // given
-        ChuckNorrisJokesService chuckNorrisJokesService = new ChuckNorrisJokesService();
+        ChuckNorrisJokesService chuckNorrisJokesService = new ChuckNorrisJokesService(new ObjectMapper());
 
         // when
         ChuckNorrisJokesApiResponse chuckNorrisJokesApiResponse = chuckNorrisJokesService.convert("{\n" +
@@ -41,7 +42,7 @@ class ChuckNorrisJokesServiceTest {
     @Test
     void randomJoke() {
         // given
-        ChuckNorrisJokesService chuckNorrisJokesService = new ChuckNorrisJokesService();
+        ChuckNorrisJokesService chuckNorrisJokesService = new ChuckNorrisJokesService(new ObjectMapper());
 
         // when
         ChuckNorrisJokesApiResponse chuckNorrisJokesApiResponse = chuckNorrisJokesService.randomJoke();
