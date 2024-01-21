@@ -4,26 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page - Chuck Norris Jokes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   </head>
   <body>
-    <h1>CHUCK NORRIS JOKES APPLICATION</h1>
-    <p>Ta aplikacja nie ma na celu urażenia kogokolwiek, a zwłaszcza pana Czaka:)</p>
+    <div class="background-container">
+      <h1>CHUCK NORRIS JOKES APPLICATION</h1>
+      <p>Ta aplikacja nie ma na celu urażenia kogokolwiek, a zwłaszcza pana Czaka:)</p>
 
-    <a th:href="@{/random/show}">
-      <button type="button">Generuj randomowy żart</button>
-    </a>
+      <a th:href="@{/random/show}">
+        <button type="button" class="styled-button">Generuj randomowy żart</button>
+      </a>
 
-    <br/>
+      <br/>
 
-    <a th:href="@{/random/show/full}">
-      <button type="button">Generuj randomowy żart - full</button>
-    </a>
+      <a th:href="@{/random/categories}">
+        <button type="button" class="styled-button">Kategorie</button>
+      </a>
 
-    <br/>
-
-    <a th:href="@{/random/categories}">
-      <button type="button">Kategorie</button>
-    </a>
+      <div class="icons-container">
+        <a class="hover-fx-5" title="github code"><i class="fab fa-github"></i></a>
+        <a class="hover-fx-5" title="README.md"><i class="fa-brands fa-readme"></i></a>
+        <a class="hover-fx-5" title="README.md"><i class="fa-solid fa-book-open-reader"></i></a>
+        <a class="hover-fx-5" title="about me"><i class="fa-solid fa-address-card"></i></a>
+      </div>
+    </div>
 
   </body>
 </html>
