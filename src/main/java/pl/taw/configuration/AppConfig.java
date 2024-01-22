@@ -8,14 +8,19 @@
 package pl.taw.configuration;
 
 import io.github.cdimascio.dotenv.Dotenv;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import pl.taw.service.TextToSpeechService;
 
 @Configuration
+@ConfigurationProperties(prefix = "myapp")
 public class AppConfig {
+
 
     @Bean
     public Dotenv dotenv() {
         return Dotenv.load();
     }
+
 }

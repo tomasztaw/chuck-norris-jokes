@@ -28,10 +28,15 @@ h1 {
     font-size: xxx-large;
 }
 
+h2 {
+    color: #333;
+}
+
 p {
     color: antiquewhite;
     font-size: 18px;
     font-weight: bold;
+    margin-top: 20px;
 }
 
 .styled-button {
@@ -109,4 +114,30 @@ p {
 
 .icons-container a {
     margin: 0 25px;
+}
+
+/* show-view */
+.show-container {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    margin: 20px;
+}
+
+.show-container p {
+    color: black;
+}
+
+.show-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.show-button:hover {
+    background-color: #0056b3;
 }
