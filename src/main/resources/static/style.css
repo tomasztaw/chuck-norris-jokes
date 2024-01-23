@@ -122,6 +122,13 @@ p {
     background-color: #f0f0f0;
     text-align: center;
     margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .show-container p {
@@ -136,8 +143,13 @@ p {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    border-radius: 10px;
 }
 
 .show-button:hover {
     background-color: #0056b3;
+}
+
+.btn-container {
+
 }

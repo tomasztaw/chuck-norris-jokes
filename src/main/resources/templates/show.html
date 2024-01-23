@@ -13,24 +13,13 @@
     <div class="show-container">
         <h2>Chuck Norris Random Joke</h2>
         <p th:text="${joke}"></p>
-        <button class="show-button" onclick="speakJoke()">Speak!</button>
-
-        <script th:inline="javascript">
-            /*<![CDATA[*/
-            function speakJoke() {
-                var jokeText = /*[[${joke}]]*/ '';
-                // Wywołaj endpoint na serwerze, aby odtworzyć dźwięk
-                fetch('/playText?text=' + encodeURIComponent(jokeText), { method: 'POST' })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-            }
-            /*]]>*/
-        </script>
+        <div class="btn-container">
+            <button class="show-button speak-button">Speak!</button>
+            <button class="show-button next-joke-button">Next joke!</button>
+            <button class="show-button home-page-button">Home Page!</button>
+        </div>
     </div>
 
+    <script th:src="@{/voice-script.js}"></script>
 </body>
 </html>
