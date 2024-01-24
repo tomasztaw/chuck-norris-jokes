@@ -150,6 +150,39 @@ p {
     background-color: #0056b3;
 }
 
-.btn-container {
+.show-container-category {
+    max-width: 800px;
+    margin: 0 auto;
+}
 
+.header-container {
+    text-align: center;
+    margin: 100px auto;
+}
+
+.categories-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.categories-container h3 {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background-color: aqua;
+}
+
+.categories-container a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.categories-btn {
+    text-align: center;
+    margin: 100px auto;
 }

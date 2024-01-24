@@ -4,10 +4,24 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Random Joke</title>
+    <title>Random Joke By Category</title>
+    <link rel="stylesheet" href="style.css" th:href="@{/style.css}" />
+
 </head>
 <body>
-<h2>Chuck Norris Random Joke By Category <span th:text="${category}"></span></h2>
-<p th:text="${joke}"></p>
+
+    <div class="show-container">
+        <h2>Chuck Norris Random Joke By Category "<span th:text="${category}"></span>"</h2>
+        <p th:text="${joke}"></p>
+        <div class="btn-container">
+            <button class="show-button speak-button">Speak!</button>
+            <button class="show-button next-joke-button">Next joke!</button>
+            <button class="show-button change-category-button">Change category!</button>
+            <button class="show-button home-page-button">Home Page!</button>
+        </div>
+    </div>
+
+    <script th:src="@{/voice-script-categories.js}"></script>
+
 </body>
 </html>

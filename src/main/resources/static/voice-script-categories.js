@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const speakButton = document.querySelector(".speak-button");
     const nextJokeButton = document.querySelector(".next-joke-button");
     const homePageButton = document.querySelector(".home-page-button");
+    const changeCategoryButton = document.querySelector(".change-category-button");
 
     speakButton.addEventListener("click", () => {
         speech.text = document.querySelector("p").textContent;
@@ -28,4 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = "/";
     });
 
+    changeCategoryButton.addEventListener("click", () => {
+        window.location.href = "/random/categories";
+    });
 });

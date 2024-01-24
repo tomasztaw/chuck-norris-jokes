@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Categories</title>
+    <link rel="stylesheet" href="style.css" th:href="@{/style.css}" />
 </head>
 <body>
 
-<h2>Available Categories:</h2>
+<div class="show-container-category">
+    <div class="header-container">
+        <h2>Available Categories:</h2>
+    </div>
 
-<h3 th:each="category : ${categories}">
-    <a th:href="@{/random/category(category=${category})}" th:text="${category}"></a>
-</h3>
+    <div class="categories-container">
+        <h3 th:each="category : ${categories}">
+            <a th:href="@{/random/category(category=${category})}" th:text="${category}"></a>
+        </h3>
+    </div>
+</div>
+
+<div class="categories-btn">
+    <button class="show-button home-page-button">Home Page!</button>
+</div>
+
+<script>
+    function redirectToHomePage() {
+    window.location.href = "/";
+}
+
+    document.querySelector('.home-page-button').addEventListener('click', redirectToHomePage);
+</script>
 
 </body>
 </html>
