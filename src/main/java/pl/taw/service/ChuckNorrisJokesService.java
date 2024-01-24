@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -25,14 +26,12 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class ChuckNorrisJokesService {
 
-    private static final Logger LOGGER = Logger.getLogger(ChuckNorrisJokesService.class.getName());
     private static final String API_URL_RANDOM_JOKE = "https://api.chucknorris.io/jokes/random";
     private static final String API_CATEGORIES = "https://api.chucknorris.io/jokes/categories";
     private static final String API_JOKE_BY_CATEGORY = "https://api.chucknorris.io/jokes/random?category=";
@@ -51,7 +50,7 @@ public class ChuckNorrisJokesService {
             Response response = client.newCall(request).execute();
 
             if (response.isSuccessful()) {
-                LOGGER.info("getCategories() response successful!");
+                log.info("getCategories() response successful!");
                 assert response.body() != null;
                 String responseBody = response.body().string();
                 ObjectMapper objectMapper = new ObjectMapper();
@@ -62,32 +61,30 @@ public class ChuckNorrisJokesService {
                 throw new RuntimeException("There is a problem with response. Response code: " + response.code());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("An error occurred while processing the joke request", e);
+            return Collections.emptyList();
         }
-
-        return Collections.emptyList();
     }
 
     public ChuckNorrisJokesApiResponse randomJoke() {
-        LOGGER.info("randomJoke()");
+        log.info("randomJoke()");
         try {
             String responseBody = getResponse(API_URL_RANDOM_JOKE);
             ChuckNorrisJokesApiResponse chuckNorrisJokesApiResponse = convert(responseBody);
-            LOGGER.info("randomJoke(...) = " + chuckNorrisJokesApiResponse);
+            log.info("randomJoke(...) = " + chuckNorrisJokesApiResponse);
 
             return chuckNorrisJokesApiResponse;
 
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "Unable to connect with external API.", e);
+            log.error("Unable to connect with external API.", e);
         }
-
-        LOGGER.info("randomJoke(...) = " + null);
+        log.info("randomJoke(...) = " + null);
 
         return null;
     }
 
     public String getResponse(String url) throws IOException {
-        LOGGER.info("run(" + url + ")");
+        log.info("run(" + url + ")");
         Request request = new Request.Builder()
                 .url(url)
                 .build();
@@ -95,18 +92,21 @@ public class ChuckNorrisJokesService {
         try (Response response = client.newCall(request).execute()) {
             assert response.body() != null;
             String body = response.body().string();
-            LOGGER.info("run(...) = " + body);
+            log.info("run(...) = " + body);
 
             return body;
+        }  finally {
+            client.dispatcher().executorService().shutdown();
+            client.connectionPool().evictAll();
         }
     }
 
     public ChuckNorrisJokesApiResponse convert(String body) {
-        LOGGER.info("convert(" + body + ")");
+        log.info("convert(" + body + ")");
         Gson gson = new Gson();
         ChuckNorrisJokesApiResponse chuckNorrisJokesApiResponse = gson.fromJson(
                 body, ChuckNorrisJokesApiResponse.class);
-        LOGGER.info("convert(...) = " + chuckNorrisJokesApiResponse);
+        log.info("convert(...) = " + chuckNorrisJokesApiResponse);
 
         return chuckNorrisJokesApiResponse;
     }
@@ -128,22 +128,8 @@ public class ChuckNorrisJokesService {
                 return null;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("An error occurred while processing the joke request", e);
             return null;
         }
-    }
-
-    // VOICES API
-    private static final String API_KEY = "Twój_klucz_API";
-    private static final String API_URL = "https://api.voicerss.org/";
-
-    public byte[] getChuckNorrisJokeAudio(String joke) {
-        String url = API_URL + "?" +
-                "key=" + API_KEY +
-                "&src=" + joke +
-                "&hl=en-us" +
-                "&c=MP3";
-        return null;
-//        return restTemplate.getForObject(url, byte[].class);
     }
 }

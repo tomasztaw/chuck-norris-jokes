@@ -50,6 +50,7 @@ p {
     cursor: pointer;
     border-radius: 5px;
     border: none;
+    margin: 20px auto;
 }
 
 .styled-button:hover {

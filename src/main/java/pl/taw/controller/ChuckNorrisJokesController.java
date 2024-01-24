@@ -7,6 +7,7 @@
  */
 package pl.taw.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +18,11 @@ import pl.taw.api.ChuckNorrisJokesApiResponse;
 import pl.taw.service.ChuckNorrisJokesService;
 
 import java.util.List;
-import java.util.logging.Logger;
 
+@Slf4j
 @Controller
 @RequestMapping("/random")
 public class ChuckNorrisJokesController {
-
-    private static final Logger LOGGER = Logger.getLogger(ChuckNorrisJokesController.class.getName());
 
     private final ChuckNorrisJokesService chuckNorrisJokesService;
 
@@ -32,9 +31,9 @@ public class ChuckNorrisJokesController {
     }
 
     public ChuckNorrisJokesApiResponse randomJoke() {
-        LOGGER.info("randomJoke()");
+        log.info("randomJoke()");
         ChuckNorrisJokesApiResponse chuckNorrisJokesApiResponse = chuckNorrisJokesService.randomJoke();
-        LOGGER.info("randomJoke(...) = " + chuckNorrisJokesApiResponse);
+        log.info("randomJoke(...) = " + chuckNorrisJokesApiResponse);
 
         return chuckNorrisJokesApiResponse;
     }
@@ -43,14 +42,6 @@ public class ChuckNorrisJokesController {
     public ModelAndView showRandomJoke() {
         ModelAndView model = new ModelAndView("show");
         model.addObject("joke", randomJoke().getValue());
-
-        return model;
-    }
-
-    @GetMapping("/show/full")
-    public ModelAndView showFullRandomJoke() {
-        ModelAndView model = new ModelAndView("show-full");
-        model.addObject("jokeObj", randomJoke());
 
         return model;
     }
