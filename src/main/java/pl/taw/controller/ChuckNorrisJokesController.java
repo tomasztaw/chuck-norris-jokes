@@ -63,4 +63,9 @@ public class ChuckNorrisJokesController {
         return "jokeByCategory";
     }
 
+    @GetMapping("/readme")
+    public String showReadme() {
+        return "readme";
+    }
+
 }

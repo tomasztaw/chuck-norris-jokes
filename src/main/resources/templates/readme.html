@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuck Norris Jokes App</title>
+</head>
+<body>
+
+<header>
+    <h1>Chuck Norris Jokes App</h1>
+<!--    <img src="src/main/resources/static/images/chuck_readme.png" alt="Chuck Norris Jokes App Logo">-->
+    <img th:src="@{/images/chuck_readme.png}" alt="Chuck Norris Jokes App Logo">
+<!--    <img src="../static/images/chuck_readme.png" alt="Chuck Norris Jokes App Logo">-->
+</header>
+
+<section id="project-description">
+    <h2>Project Description</h2>
+    <p>This project is a simple web application that allows users to browse Chuck Norris jokes. Users can choose between displaying a random joke or selecting a specific category.</p>
+</section>
+
+<section id="technologies-used">
+    <h2>Technologies Used</h2>
+    <ul>
+        <li>Java</li>
+        <li>Spring</li>
+        <li>Thymeleaf</li>
+        <li>JavaScript</li>
+    </ul>
+</section>
+
+<section id="installation">
+    <h2>Installation</h2>
+    <p>The application is hosted online, and no local installation is required.</p>
+</section>
+
+<section id="running-the-app">
+    <h2>Running the App</h2>
+    <p>Visit <a th:href="@{http://your-app-url}" href="http://your-app-url">Chuck Norris Jokes App</a> to access the application.</p>
+</section>
+
+<!-- ... other sections ... -->
+
+<section id="contact">
+    <h2>Contact</h2>
+    <p>For any questions or feedback, please contact [Your Name] at <a th:href="@{mailto:your.email@example.com}" href="mailto:your.email@example.com">your.email@example.com</a>.</p>
+</section>
+
+</body>
+</html>
