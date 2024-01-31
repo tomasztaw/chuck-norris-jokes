@@ -3,7 +3,7 @@ FROM ubuntu:latest AS build
 LABEL authors="tomasz"
 
 RUN apt-get update
-RUN apt-get install openjdk-17-jdk -y
+RUN apt-get install openjdk-17-jdk gradle -y
 COPY . .
 
 RUN ./gradlew bootJar --no-daemon
