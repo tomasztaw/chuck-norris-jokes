@@ -1,17 +1,16 @@
-FROM ubuntu:latest AS build
+FROM gradle:7.3.3-jdk17 AS build
 
-LABEL authors="tomasz"
+WORKDIR /app
+COPY build.gradle .
+COPY settings.gradle .
+COPY src src
 
-RUN apt-get update
-RUN apt-get install openjdk-17-jdk gradle -y
-COPY . .
-
-RUN ./gradlew bootJar --no-daemon
+RUN gradle build
 
 FROM openjdk:17-jdk-slim
 
 EXPOSE 8080
 
-COPY --from=build /build/libs/demo-1.jar app.jar
+COPY --from=build /app/build/libs/demo-1.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
