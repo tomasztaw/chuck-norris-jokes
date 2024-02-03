@@ -6,7 +6,7 @@ RUN mvn clean package -DskipTests
 
 FROM openjdk:21-jdk
 
-COPY --from=build /target/chuck-norris-jokes.jar chuck-norris-jokes.jar
+COPY --from=build /target/chuck-norris-jokes-0.0.1-SNAPSHOT.jar.original chuck-norris-jokes.jar
 
 EXPOSE 8080
 
