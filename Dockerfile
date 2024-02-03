@@ -1,14 +1,14 @@
-FROM maven:3.8.4-openjdk-17 AS build
+FROM maven:3.8.8-eclipse-temurin-21-alpine AS build
 
-WORKDIR /app
 COPY . .
 
-RUN mvn clean install
+RUN mvn clean package -DskipTests
 
-FROM openjdk:17-jdk-slim
+FROM openjdk:21-jdk
+
+COPY --from=build /target/chuck-norris-jokes.jar chuck-norris-jokes.jar
 
 EXPOSE 8080
 
-COPY --from=build /app/target/demo-1.jar app.jar
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "chuck-norris-jokes.jar"]
