@@ -1,6 +1,9 @@
 :root {
-    /*--github-color: #181717;*/
-    --github-color: #28A745;
+    --github-color: #181717;
+    --read-me-color: #28A745;
+    --twitter-color: #00acee;
+    --linkedin-color: #0077B5;
+    --about-me-color: #00367f;
 }
 
 body {
@@ -40,13 +43,15 @@ p {
 }
 
 .styled-button {
-    background-color: #4CAF50;
+    /*background-color: #4CAF50;*/
+    background-color: #415903;
     color: white;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    /*font-size: 16px;*/
+    font-size: 20px;
     cursor: pointer;
     border-radius: 5px;
     border: none;
@@ -54,7 +59,8 @@ p {
 }
 
 .styled-button:hover {
-    background-color: #45a049;
+    /*background-color: #45a049;*/
+    background-color: #415945;
 }
 
 /* ikonki */
@@ -62,7 +68,7 @@ p {
     color: #fff;
 }
 
-.hover-fx-5 {
+.hover-fx-read-me, .hover-fx-git, .hover-fx-actuator, .hover-fx-about-me, .hover-fx-linkedin {
     font-size: 2rem;
     display: inline-block;
     cursor: pointer;
@@ -78,11 +84,28 @@ p {
     transition: 300ms;
 }
 
-.hover-fx-5 {
+.hover-fx-read-me {
+    background-color: var(--read-me-color);
+}
+
+.hover-fx-git {
     background-color: var(--github-color);
 }
 
-.hover-fx-5:after {
+.hover-fx-actuator {
+    background-color: var(--twitter-color);
+}
+
+.hover-fx-about-me {
+    background-color: var(--about-me-color);
+}
+
+.hover-fx-linkedin {
+    background-color: var(--linkedin-color);
+}
+
+
+.hover-fx-read-me:after, .hover-fx-git:after, .hover-fx-actuator:after, .hover-fx-about-me:after, .hover-fx-linkedin:after {
     pointer-events: none;
     position: absolute;
     width: 100%;
@@ -97,12 +120,44 @@ p {
     transition: 300ms;
 }
 
-.hover-fx-5:hover:after {
+.hover-fx-read-me:hover:after {
+    opacity: 1;
+    transform: scale(1.15);
+    box-shadow: 0 0 0 3px var(--read-me-color),
+    0px 0px 50px var(--read-me-color),
+    0px 0px 100px var(--read-me-color);
+}
+
+.hover-fx-git:hover:after {
     opacity: 1;
     transform: scale(1.15);
     box-shadow: 0 0 0 3px var(--github-color),
     0px 0px 50px var(--github-color),
     0px 0px 100px var(--github-color);
+}
+
+.hover-fx-actuator:hover:after {
+    opacity: 1;
+    transform: scale(1.15);
+    box-shadow: 0 0 0 3px var(--twitter-color),
+    0px 0px 50px var(--twitter-color),
+    0px 0px 100px var(--twitter-color);
+}
+
+.hover-fx-about-me:hover:after {
+    opacity: 1;
+    transform: scale(1.15);
+    box-shadow: 0 0 0 3px var(--about-me-color),
+    0px 0px 50px var(--about-me-color),
+    0px 0px 100px var(--about-me-color);
+}
+
+.hover-fx-linkedin:hover:after {
+    opacity: 1;
+    transform: scale(1.15);
+    box-shadow: 0 0 0 3px var(--linkedin-color),
+    0px 0px 50px var(--linkedin-color),
+    0px 0px 100px var(--linkedin-color);
 }
 
 /* kontener z ikonkami */

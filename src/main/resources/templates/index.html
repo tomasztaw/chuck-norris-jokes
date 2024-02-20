@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Home Page - Chuck Norris Jokes</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  </head>
-  <body>
-    <div class="background-container">
-      <h1>CHUCK NORRIS JOKES APPLICATION</h1>
-<!--      <p>Ta aplikacja nie ma na celu urażenia kogokolwiek, a zwłaszcza pana Czaka:)</p>-->
-      <p>This application is not intended to offend anyone, especially Mr. Chuck :)</p>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="background-container">
+    <h1>CHUCK NORRIS JOKES APPLICATION</h1>
+    <!--      <p>Ta aplikacja nie ma na celu urażenia kogokolwiek, a zwłaszcza pana Czaka:)</p>-->
+    <p>This application is not intended to offend anyone, especially Mr. Chuck :)</p>
 
-      <a th:href="@{/random/show}">
-<!--        <button type="button" class="styled-button">Generuj randomowy żart</button>-->
+    <a th:href="@{/random/show}">
+        <!--        <button type="button" class="styled-button">Generuj randomowy żart</button>-->
         <button type="button" class="styled-button">Generate random joke</button>
-      </a>
+    </a>
 
-      <br/>
+    <br/>
 
-      <a th:href="@{/random/categories}">
-<!--        <button type="button" class="styled-button">Kategorie</button>-->
+    <a th:href="@{/random/categories}">
+        <!--        <button type="button" class="styled-button">Kategorie</button>-->
         <button type="button" class="styled-button">Categories</button>
-      </a>
+    </a>
 
-      <div class="icons-container">
-        <a class="hover-fx-5" title="github code" href="https://github.com/tomasztaw/chuck-norris-jokes.git" target="_blank">
+    <div class="icons-container">
+        <a class="hover-fx-git" title="github code" href="https://github.com/tomasztaw/chuck-norris-jokes.git"
+           target="_blank">
             <i class="fab fa-github"></i></a>
-        <a class="hover-fx-5" title="README.md" th:href="@{/random/readme}"><i class="fa-brands fa-readme"></i></a>
-        <a class="hover-fx-5" title="/actuator" th:href="@{/actuator}"><i class="fa-solid fa-sliders"></i></a>
-        <a class="hover-fx-5" title="about me" href="https://github.com/tomasztaw/tomasztaw.git" target="_blank">
+        <a class="hover-fx-read-me" title="README.md" th:href="@{/random/readme}"><i class="fa-brands fa-readme"></i></a>
+        <a class="hover-fx-actuator" title="/actuator" th:href="@{/actuator}"><i class="fa-solid fa-sliders"></i></a>
+        <a class="hover-fx-about-me" title="about me" href="https://github.com/tomasztaw/tomasztaw.git" target="_blank">
             <i class="fa-solid fa-address-card"></i></a>
-      </div>
+        <a class="hover-fx-linkedin" title="linkedin" href="https://www.linkedin.com/in/tomasz-w%C4%99grzyn-84b5b4291/"
+           target="_blank">
+            <i class="fab fa-linkedin"></i></a>
     </div>
+</div>
 
-  </body>
+</body>
 </html>
