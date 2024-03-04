@@ -4,6 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chuck Norris Jokes App</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        h1 {
+            margin: 10px;
+        }
+
+        h2 {
+            margin-left: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            vertical-align: middle;
+        }
+
+        .home-link {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            background-color: blue;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        .section-container {
+            margin-top: 60px;
+
+        section {
+            background-color: #fff;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -12,37 +79,60 @@
     <img th:src="@{/images/chuck_readme.png}" alt="Chuck Norris Jokes App Logo">
 </header>
 
-<section id="project-description">
-    <h2>Project Description</h2>
-    <p>This project is a simple web application that allows users to browse Chuck Norris jokes. Users can choose between displaying a random joke or selecting a specific category.</p>
-</section>
+<a class="home-link" href="https://chuck-norris-jokes-sc09.onrender.com">Powrót do strony głównej</a>
 
-<section id="technologies-used">
-    <h2>Technologies Used</h2>
-    <ul>
-        <li>Java</li>
-        <li>Spring</li>
-        <li>Thymeleaf</li>
-        <li>JavaScript</li>
-    </ul>
-</section>
+<div class="section-container">
 
-<section id="installation">
-    <h2>Installation</h2>
-    <p>The application is hosted online, and no local installation is required.</p>
-</section>
+    <section id="project-description">
+        <h2>Project Description</h2>
+        <p>This project is a simple web application that allows users to browse Chuck Norris jokes. Users can choose between displaying a random joke or selecting a specific category.</p>
+    </section>
 
-<section id="running-the-app">
-    <h2>Running the App</h2>
-    <p>Visit <a th:href="@{http://your-app-url}" href="http://your-app-url">Chuck Norris Jokes App</a> to access the application.</p>
-</section>
+    <section id="technologies-used">
+        <h2>Technologies Used</h2>
+        <ul>
+            <li>Java</li>
+            <li>Spring</li>
+            <li>Thymeleaf</li>
+            <li>JavaScript</li>
+        </ul>
+    </section>
 
-<!-- ... other sections ... -->
+    <section id="installation">
+        <h2>Installation</h2>
+        <p>The application is hosted online, and no local installation is required.</p>
+    </section>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <p>For any questions or feedback, please contact [Your Name] at <a th:href="@{mailto:tomasz.wegrzyn.wro@gmail.com}" href="mailto:tomasz.wegrzyn.wro@gmail.com">tomasz.wegrzyn.wro@gmail.com</a>.</p>
-</section>
+    <section id="running-the-app">
+        <h2>Running the App</h2>
+        <p>Visit <a th:href="@{http://your-app-url}" href="https://chuck-norris-jokes-sc09.onrender.com">Chuck Norris Jokes App</a> to access the application.</p>
+    </section>
 
+    <!-- ... other sections ... -->
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>For any questions or feedback, please contact [Tomasz] at <a th:href="@{mailto:tomasz.wegrzyn.wro@gmail.com}" href="mailto:tomasz.wegrzyn.wro@gmail.com">tomasz.wegrzyn.wro@gmail.com</a>.</p>
+    </section>
+
+    <section id="contributing">
+        <h2>Contributing</h2>
+        <p>We welcome contributions! Feel free to submit issues or pull requests.</p>
+    </section>
+
+    <section id="license">
+        <h2>License</h2>
+        <p>This project is licensed under the [MIT License](LICENSE).</p>
+    </section>
+
+    <section id="further-dev">
+        <h2>Further development of the application</h2>
+        <ul>
+            <li>Added the ability to search by entering a phrase</li>
+            <li>Writing more complex tests</li>
+            <li>Making it possible to translate jokes into Polish</li>
+        </ul>
+    </section>
+</div>
 </body>
 </html>

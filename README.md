@@ -30,7 +30,7 @@ The application is hosted online, and no local installation is required.
 
 ## Running the App
 
-Visit [Chuck Norris Jokes App](http://your-app-url) to access the application.
+Visit [Chuck Norris Jokes App](https://chuck-norris-jokes-sc09.onrender.com) to access the application.
 
 ## Usage
 
@@ -49,3 +49,10 @@ This project is licensed under the [MIT License](LICENSE).
 ## Contact
 
 For any questions or feedback, please contact me at [tomasz.wegrzyn.wro@gmail.com].
+
+
+## Further development of the application
+
+- Added the ability to search by entering a phrase
+- Writing more complex tests
+- Making it possible to translate jokes into Polish
