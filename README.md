@@ -17,6 +17,8 @@ Welcome to the Chuck Norris Jokes App - a simple full-stack Java project designe
 ## Project Description
 
 This project is a simple web application that allows users to browse Chuck Norris jokes. Users can choose between displaying a random joke or selecting a specific category.
+The application connects "underneath" to [chucknorris.io](https://api.chucknorris.io/) and displays the joke.
+Then another API SpeechSynthesisUtterance gives us the ability to read it by machine.
 
 ## Technologies Used
 
@@ -48,8 +50,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any questions or feedback, please contact me at [tomasz.wegrzyn.wro@gmail.com].
-
+For any questions or feedback, please contact me at tomasz.wegrzyn.wro@gmail.com
 
 ## Further development of the application
 
